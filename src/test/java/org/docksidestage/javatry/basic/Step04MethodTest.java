@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 the original author or authors.
+ * Copyright 2019-2019 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,15 +35,15 @@ public class Step04MethodTest extends PlainTestCase {
      */
     public void test_method_call_basic() {
         String sea = supplySomething();
-        log(sea); // your answer? =>
+        log(sea); // your answer? => over
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_method_call_many() {
-        String sea = functionSomething("mystic");
-        consumeSomething(supplySomething());
+        String sea = functionSomething("mystic"); //sea = 'mysmys'
+        consumeSomething(supplySomething()); //'over'を代入
         runnableSomething();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => mysmys
     }
 
     private String functionSomething(String name) {
@@ -68,19 +68,19 @@ public class Step04MethodTest extends PlainTestCase {
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
-    public void test_method_object() {
+    public void test_method_object() { //
         St4MutableStage mutable = new St4MutableStage();
         int sea = 904;
         boolean land = false;
-        helloMutable(sea - 4, land, mutable);
+        helloMutable(sea - 4, land, mutable);//900 , false , mutableオブジェクト => return 901
         if (!land) {
-            sea = sea + mutable.getStageName().length();
+            sea = sea + mutable.getStageName().length(); //904 + 9
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 910
     }
 
     private int helloMutable(int sea, Boolean land, St4MutableStage piari) {
-        sea++;
+        sea++; //901
         land = true;
         piari.setStageName("mystic");
         return sea;
@@ -108,14 +108,14 @@ public class Step04MethodTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_method_instanceVariable() {
         hasAnnualPassport = true;
-        int sea = inParkCount;
+        int sea = inParkCount; //値を指定していないので0??
         offAnnualPassport(hasAnnualPassport);
         for (int i = 0; i < 100; i++) {
             goToPark();
         }
         ++sea;
         sea = inParkCount;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 100
     }
 
     private void offAnnualPassport(boolean hasAnnualPassport) {
@@ -152,11 +152,38 @@ public class Step04MethodTest extends PlainTestCase {
      */
     public void test_method_making() {
         // comment out after making these methods
-        //String replaced = replaceCtoB(replaceAtoB("ABC"));
-        //String sea = addPrefix("broadway", replaced);
-        //if (isAvailableLogging()) {
-        //    showSea(sea);
-        //}
+        String replaced = replaceCtoB(replaceAtoB("ABC"));
+        String sea = addPrefix("broadway", replaced);
+
+        if (isAvailableLogging()) {
+            showSea(sea);
+        }
+    }
+
+    private Boolean availableLogging = true;
+
+    private String replaceAtoB(String str) { //return BBC 
+        String replacedArg = str.replace('A', 'B');
+        return replacedArg;
+    }
+
+    private String replaceCtoB(String str) { //return BBB
+        String replacedArg = str.replace('C', 'B');
+        return replacedArg;
+    }
+
+    private String addPrefix(String prefix, String target) { //return broadway:BBB
+        String colon = ":";
+        String unionStr = prefix + colon + target;
+        return unionStr;
+    }
+
+    private Boolean isAvailableLogging() { //return true
+        return availableLogging;
+    }
+
+    private void showSea(String str) { // return broadway:BBB
+        log(str);
     }
 
     // write methods here
