@@ -116,7 +116,7 @@ public class TicketBooth {
         final int ticketPrice = TWO_DAY_PRICE;
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
         final int change = handedMoney - ticketPrice;
-        TicketBuyReslut tb = new TicketBuyResult();
+        TicketBuyResult tb = new TicketBuyResult();
 
         return change;
 
