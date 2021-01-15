@@ -13,7 +13,8 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.basic.buytick
+package org.docksidestage.bizfw.basic.buyticket;
+
 // done akiyaman javadocにauthorを追加お願いします by jflute (2020/10/16)
 /**
  * @author jflute
@@ -99,6 +100,8 @@ public class TicketBooth {
     //        return CHANGE;
     //    }
 
+    // TODO 再利用についてレビューをしていただく  (2020/12/11)
+
     public Ticket buyOneDayPassport(int handedMoney) { // Challenge1問目で追加
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
@@ -116,7 +119,8 @@ public class TicketBooth {
         final int ticketPrice = TWO_DAY_PRICE;
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
         final int change = handedMoney - ticketPrice;
-        TicketBuyResult tb = new TicketBuyResult();
+        Ticket ticket;
+        TicketBuyResult tbr = new TicketBuyResult(ticket, change);
 
         return change;
 
