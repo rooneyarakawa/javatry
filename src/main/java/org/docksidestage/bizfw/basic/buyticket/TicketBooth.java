@@ -102,12 +102,31 @@ public class TicketBooth {
 
     // TODO 再利用についてレビューをしていただく  (2020/12/11)
 
+    //    public void buyOneDayPassport(int handedMoney) { // Let's fix 4問目で追加
+    //
+    //        final int numberOfTickets = 1; // 購入予定のチケット枚数
+    //        final int ticketPrice = ONE_DAY_PRICE;
+    //        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+    //
+    //    }
+    //
+    //    public int buyTwoDayPassport(int handedMoney) { // Let's fix 4問目で追加
+    //
+    //        final int numberOfTickets = 2; // 購入予定のチケット枚数
+    //        final int ticketPrice = TWO_DAY_PRICE;
+    //        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+    //        final int change = handedMoney - ticketPrice;
+    //
+    //        return change;
+    //
+    //    }
+    //
     public Ticket buyOneDayPassport(int handedMoney) { // Challenge1問目で追加
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = ONE_DAY_PRICE;
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        Ticket ticket = new Ticket(ONE_DAY_PRICE);
+        Ticket ticket = new Ticket(ticketPrice);
 
         return ticket;
 
@@ -119,7 +138,7 @@ public class TicketBooth {
         final int ticketPrice = TWO_DAY_PRICE;
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
         final int change = handedMoney - ticketPrice;
-        Ticket ticket;
+        Ticket ticket = new Ticket(ticketPrice);
         TicketBuyResult tbr = new TicketBuyResult(ticket, change);
 
         return change;
