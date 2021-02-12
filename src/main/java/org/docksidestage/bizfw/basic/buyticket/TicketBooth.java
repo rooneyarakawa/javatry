@@ -138,7 +138,7 @@ public class TicketBooth {
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = TWO_DAY_PRICE;
         final int change = handedMoney - ticketPrice;
-        final String ticketType = "TwoDayPass";
+        final String ticketType = "TwoDayPass"; //安直だし汎用性が低そう。なにかしらの値を渡すとチケット種別を返してくれるクラスとか作ったほうがいい？
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
         Ticket ticket = new Ticket(ticketPrice, ticketType);
         TicketBuyResult result = new TicketBuyResult(ticket, change);

@@ -191,6 +191,7 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
         log(twoDayPassport.getTicketType());
+        log(twoDayPassport.getDisplayPrice());
     }
 
     // ===================================================================================
