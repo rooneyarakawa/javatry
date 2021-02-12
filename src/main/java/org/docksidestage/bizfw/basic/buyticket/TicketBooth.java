@@ -42,6 +42,7 @@ public class TicketBooth {
     //                                                                         Constructor
     //                                                                         ===========
     public TicketBooth() {
+
     }
 
     // ===================================================================================
@@ -83,7 +84,7 @@ public class TicketBooth {
     //            throw new TicketShortMoneyException("Short money: " + handedMoney);
     //        }
     //
-    //        //                TODO akiyaman まあ、ローカル変数だったら、定数っぽくても、大文字じゃなくて普通のキャメルケースで by jflute (2020/10/16)
+    //        //                done akiyaman まあ、ローカル変数だったら、定数っぽくても、大文字じゃなくて普通のキャメルケースで by jflute (2020/10/16)
     //        //                変数を選択して、ctrl+1 => rename in file で修正してみましょう
     //
     //        final int CHANGE = handedMoney - TWO_DAY_PRICE;
@@ -100,7 +101,7 @@ public class TicketBooth {
     //        return CHANGE;
     //    }
 
-    // TODO 再利用についてレビューをしていただく  (2020/12/11)
+    // done 再利用についてレビューをしていただく  (2020/12/11)
 
     //    public void buyOneDayPassport(int handedMoney) { // Let's fix 4問目で追加
     //
@@ -121,7 +122,7 @@ public class TicketBooth {
     //
     //    }
     //
-    public Ticket buyOneDayPassport(int handedMoney) { // Challenge1問目で追加
+    public Ticket buyOneDayPassport(int handedMoney) { // Challenge1問目で追加（TicketBoothクラスをいじったのでエラーでてます）
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = ONE_DAY_PRICE;
@@ -132,16 +133,17 @@ public class TicketBooth {
 
     }
 
-    public int buyTwoDayPassport(int handedMoney) { // challenge 2問目で追加
+    public TicketBuyResult buyTwoDayPassport(int handedMoney) { // challenge 2問目で追加
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = TWO_DAY_PRICE;
-        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
         final int change = handedMoney - ticketPrice;
-        Ticket ticket = new Ticket(ticketPrice);
-        TicketBuyResult tbr = new TicketBuyResult(ticket, change);
+        final String ticketType = "TwoDayPass";
+        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+        Ticket ticket = new Ticket(ticketPrice, ticketType);
+        TicketBuyResult result = new TicketBuyResult(ticket, change);
 
-        return change;
+        return result;
 
     }
 
