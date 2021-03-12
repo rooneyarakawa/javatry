@@ -19,6 +19,7 @@ import org.docksidestage.bizfw.basic.buyticket.Ticket; // challenge1で追加
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth.TicketShortMoneyException;
 import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
+import org.docksidestage.bizfw.basic.buyticket.TicketType;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -192,7 +193,10 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
         log(twoDayPassport.getDisplayPrice());
-        log(twoDayPassport.getTicketType());
+
+        if (TicketType.TWO_DAY_PASS.getTicketType() == twoDayPassport.getTicketType()) {
+            log(twoDayPassport.getTicketType());
+        }
 
     }
 

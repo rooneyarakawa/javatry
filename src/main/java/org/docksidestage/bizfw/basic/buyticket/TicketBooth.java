@@ -127,11 +127,12 @@ public class TicketBooth {
     //
     public Ticket buyOneDayPassport(int handedMoney) { // Challenge2問目でTicketTypeが判別できるよう修正
 
-        final int numberOfTickets = 2; // 購入予定のチケット枚数
+        final int numberOfTickets = 1; // 購入予定のチケット枚数
         final int ticketDays = 1;
         final int ticketPrice = ONE_DAY_PRICE;
+        final int ticketType = TicketType.ONE_DAY_PASS.getTicketDays();
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        String ticketType = TicketType.getTicketTypeByDays(ticketDays);
+
         Ticket ticket = new Ticket(ticketPrice, ticketType);
 
         return ticket;
@@ -142,10 +143,9 @@ public class TicketBooth {
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = TWO_DAY_PRICE;
-        final int ticketDays = 2;
         final int change = handedMoney - ticketPrice;
+        int ticketType = TicketType.TWO_DAY_PASS.getTicketType();
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        String ticketType = TicketType.getTicketTypeByDays(ticketDays);
         Ticket ticket = new Ticket(ticketPrice, ticketType);
         TicketBuyResult result = new TicketBuyResult(ticket, change);
 
