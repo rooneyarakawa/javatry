@@ -25,8 +25,8 @@ public class TicketBuyResult {
     //                                                                          Definition
     //                                                                          ==========
 
-    private Ticket ticket;
-    private int change;
+    private final Ticket ticket;
+    private final int change;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -55,6 +55,11 @@ public class TicketBuyResult {
 
     public int getChange() {
         return change;
+    }
+
+    public String getTicketType() {
+        String str = "ticket_type";
+        return str;
     }
 
 }

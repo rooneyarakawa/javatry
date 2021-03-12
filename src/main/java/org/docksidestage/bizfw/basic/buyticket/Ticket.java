@@ -27,6 +27,7 @@ public class Ticket {
     private final int displayPrice;
     private boolean alreadyIn = false;
     private final String ticketType;
+    private int doInCount;
 
     // ===================================================================================
     //                                                                         Constructor

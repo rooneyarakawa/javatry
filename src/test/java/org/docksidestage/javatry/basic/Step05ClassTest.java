@@ -105,16 +105,17 @@ public class Step05ClassTest extends PlainTestCase {
      * Make method for buying two-day passport (price is 13200). (which can return change as method return value)
      * (TwoDayPassport (金額は13200) も買うメソッドを作りましょう (戻り値でお釣りをちゃんと返すように))
      */
-    public void test_class_letsFix_makeMethod_twoday() {
-        // comment out after making the method
-        TicketBooth booth = new TicketBooth();
-        int money = 14000;
-        int change = booth.buyTwoDayPassport(money);
-        Integer sea = booth.getSalesProceeds() + change;
-        log(sea); // should be same as money
-        log(change);
-        log(booth.getQuantity(), booth.getSalesProceeds()); // lets fix 4問目より検証のため追加
-    }
+    // TicketBoothメソッドの使い方が変わったためエラーが出力される。とりあえず原文のまま保存。
+    //    public void test_class_letsFix_makeMethod_twoday() {
+    //        // comment out after making the method
+    //        TicketBooth booth = new TicketBooth();
+    //        int money = 14000;
+    //        int change = booth.buyTwoDayPassport(money);
+    //        Integer sea = booth.getSalesProceeds() + change;
+    //        log(sea); // should be same as money
+    //        log(change);
+    //        log(booth.getQuantity(), booth.getSalesProceeds()); // lets fix 4問目より検証のため追加
+    //    }
 
     /**
      * Recycle duplicate logics between one-day and two-day by e.g. private method in class. (And confirm result of both before and after) <br>
@@ -183,15 +184,25 @@ public class Step05ClassTest extends PlainTestCase {
      * Now you cannot judge ticket type "one-day or two-day?", so add method to judge it. <br>
      * (チケットをもらってもOneDayなのかTwoDayなのか区別が付きません。区別を付けられるメソッドを追加しましょう)
      */
-    //2021/1/15 ここまで。次回もここから
+    // 2021/1/15 ここまで。次回もここから
     public void test_class_moreFix_type() {
         // your confirmation code here
         TicketBooth booth = new TicketBooth();
         int handedMoney = 20000;
         TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
-        log(twoDayPassport.getTicketType());
         log(twoDayPassport.getDisplayPrice());
+        log(twoDayPassport.getTicketType());
+
+    }
+
+    // 2021/3/12 ここから
+    /**
+     * Now you can use only one in spite of two-day passport, so fix Ticket to be able to handle plural days. <br>
+     * (TwoDayPassportなのに一回しか利用できません。複数日数に対応できるようにTicketを修正しましょう)
+     */
+    public void test_class_moreFix_usePluralDays() {
+        // your confirmation code here
     }
 
     // ===================================================================================
@@ -213,15 +224,20 @@ public class Step05ClassTest extends PlainTestCase {
      * o 複数日用のクラスでは、決められた回数だけ doInPark() できるように
      * </pre>
      */
-    public void test_class_moreFix_useInterface() {
-        // your confirmation code here
-    }
 
     /**
      * Fix it to be able to buy four-day passport (price is 22400). <br>
      * (FourDayPassport (金額は22400) のチケットも買えるようにしましょう)
      */
-    public void test_class_moreFix_wonder() {
+    public void test_class_moreFix_wonder_four() {
+        // your confirmation code here
+    }
+
+    /**
+     * Fix it to be able to buy night-only two-day passport (price is 7400). <br>
+     * (NightOnlyTwoDayPassport (金額は7400) のチケットも買えるようにしましょう)
+     */
+    public void test_class_moreFix_wonder_night() {
         // your confirmation code here
     }
 
@@ -230,6 +246,7 @@ public class Step05ClassTest extends PlainTestCase {
      * (その他、気になるところがあったらリファクタリングしてみましょう (例えば、バランスの良いメソッド名や変数名になっていますか？))
      */
     public void test_class_moreFix_yourRefactoring() {
-        // write confirmation code here
+        // your confirmation code here
     }
+
 }

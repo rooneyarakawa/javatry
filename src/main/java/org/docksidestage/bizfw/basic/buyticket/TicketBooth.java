@@ -25,6 +25,9 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
+    //    public static String ONE_DAY_PASS_TYPE = "OneDayPass";
+    //    public static String TWO_DAY_PASS_TYPE = "TwoDayPass";
+
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
     private static final int TWO_DAY_PRICE = 13200;
@@ -122,12 +125,14 @@ public class TicketBooth {
     //
     //    }
     //
-    public Ticket buyOneDayPassport(int handedMoney) { // Challenge1問目で追加（TicketBoothクラスをいじったのでエラーでてます）
+    public Ticket buyOneDayPassport(int handedMoney) { // Challenge2問目でTicketTypeが判別できるよう修正
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
+        final int ticketDays = 1;
         final int ticketPrice = ONE_DAY_PRICE;
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        Ticket ticket = new Ticket(ticketPrice);
+        String ticketType = TicketType.getTicketTypeByDays(ticketDays);
+        Ticket ticket = new Ticket(ticketPrice, ticketType);
 
         return ticket;
 
@@ -137,9 +142,10 @@ public class TicketBooth {
 
         final int numberOfTickets = 2; // 購入予定のチケット枚数
         final int ticketPrice = TWO_DAY_PRICE;
+        final int ticketDays = 2;
         final int change = handedMoney - ticketPrice;
-        final String ticketType = "TwoDayPass"; //安直だし汎用性が低そう。なにかしらの値を渡すとチケット種別を返してくれるクラスとか作ったほうがいい？
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+        String ticketType = TicketType.getTicketTypeByDays(ticketDays);
         Ticket ticket = new Ticket(ticketPrice, ticketType);
         TicketBuyResult result = new TicketBuyResult(ticket, change);
 
@@ -206,6 +212,36 @@ public class TicketBooth {
             super(msg);
         }
     }
+
+    //    private enum TicketType {
+    //
+    //        ONE_DAY_PASS("OneDay", 1), TWO_DAY_PASS_TYPE("TwoDay", 2);
+    //
+    //        private String ticketType;
+    //        private int ticketDays;
+    //
+    //        private TicketType(String ticketType, int ticketDays) {
+    //            this.ticketType = ticketType;
+    //            this.ticketDays = ticketDays;
+    //        }
+    //
+    //        private String getTicketType() {
+    //            return ticketType;
+    //        }
+    //
+    //        private int getTicketDays() {
+    //            return ticketDays;
+    //        }
+    //
+    //        private static String getTicketTypeByDays(int ticketDays) {
+    //            for (TicketType ticket : TicketType.values()) {
+    //                if (ticket.getTicketDays() == ticketDays) {
+    //                    return ticket.getTicketType();
+    //                }
+    //            }
+    //            return "ticket type not found";
+    //        }
+    //    };
 
     // ===================================================================================
     //                                                                            Accessor
