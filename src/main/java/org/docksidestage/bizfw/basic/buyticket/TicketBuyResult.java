@@ -57,9 +57,4 @@ public class TicketBuyResult {
         return change;
     }
 
-    public String getTicketType() {
-        String str = "ticket_type";
-        return str;
-    }
-
 }

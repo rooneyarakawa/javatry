@@ -26,13 +26,13 @@ public class Ticket {
     //                                                                           =========
     private final int displayPrice;
     private boolean alreadyIn = false;
-    private int ticketType;
+    private TicketType ticketType;
     private int doInCount = 0;
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public Ticket(int displayPrice, int ticketType) {
+    public Ticket(int displayPrice, TicketType ticketType) {
         this.displayPrice = displayPrice;
         this.ticketType = ticketType;
         //this.ticketDays = ticketDays;
@@ -42,11 +42,11 @@ public class Ticket {
     //                                                                             In Park
     //                                                                             =======
     public void doInPark() {
-        if (ticketType > doInCount) {
-            doInCount += 1;
-        } else {
-            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
-        }
+        //        if (ticketType > doInCount) {
+        //            doInCount += 1;
+        //        } else {
+        //            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
+        //        }
     }
 
     // ===================================================================================
@@ -56,7 +56,7 @@ public class Ticket {
         return displayPrice;
     }
 
-    public int getTicketType() {
+    public TicketType getTicketType() {
         return ticketType;
     }
 

@@ -194,13 +194,13 @@ public class Step05ClassTest extends PlainTestCase {
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
         log(twoDayPassport.getDisplayPrice());
 
-        if (TicketType.TWO_DAY_PASS.getTicketType() == twoDayPassport.getTicketType()) {
+        if (TicketType.TWO_DAY_PASS == twoDayPassport.getTicketType()) {
             log(twoDayPassport.getTicketType());
         }
 
     }
 
-    // 2021/3/12 ここから
+    //2021/3/15 次回ここから
     /**
      * Now you can use only one in spite of two-day passport, so fix Ticket to be able to handle plural days. <br>
      * (TwoDayPassportなのに一回しか利用できません。複数日数に対応できるようにTicketを修正しましょう)

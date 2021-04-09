@@ -8,19 +8,19 @@ public enum TicketType {
     ONE_DAY_PASS("OneDay", 1), TWO_DAY_PASS("TwoDay", 2);
 
     private String ticketName;
-    private int ticketType;
+    private int ticketDays;
 
     private TicketType(String ticketName, int ticketDays) {
         this.ticketName = ticketName;
-        this.ticketType = ticketDays;
+        this.ticketDays = ticketDays;
     }
 
     public String getTicketName() {
         return ticketName;
     }
 
-    public int getTicketType() {
-        return ticketType;
+    public int getTicketDays() {
+        return ticketDays;
     }
 
     // 懐かしきおもひで
