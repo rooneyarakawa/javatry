@@ -2,17 +2,21 @@ package org.docksidestage.bizfw.basic.buyticket;
 
 /**
  *チケットの種類に関しての操作を行う
+ * @author jflute
+ * @author akiyaman
  */
 public enum TicketType {
 
-    ONE_DAY_PASS("OneDay", 1), TWO_DAY_PASS("TwoDay", 2);
+    ONE_DAY_PASS("OneDay", 1, 7400), TWO_DAY_PASS("TwoDay", 2, 13200);
 
-    private String ticketName;
-    private int ticketDays;
+    private final String ticketName;
+    private final int ticketDays;
+    private final int ticketPrice;
 
-    private TicketType(String ticketName, int ticketDays) {
+    private TicketType(String ticketName, int ticketDays, int ticketPrice) {
         this.ticketName = ticketName;
         this.ticketDays = ticketDays;
+        this.ticketPrice = ticketPrice;
     }
 
     public String getTicketName() {
@@ -21,6 +25,10 @@ public enum TicketType {
 
     public int getTicketDays() {
         return ticketDays;
+    }
+
+    public int getTicketPrice() {
+        return ticketPrice;
     }
 
     // 懐かしきおもひで

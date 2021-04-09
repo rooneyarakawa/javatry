@@ -13,6 +13,7 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+
 package org.docksidestage.bizfw.basic.buyticket;
 
 /**
@@ -24,29 +25,33 @@ public class Ticket {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    private final TicketType ticketType;
     private final int displayPrice;
+    private final int ticketDays;
+
     private boolean alreadyIn = false;
-    private TicketType ticketType;
-    private int doInCount = 0;
+    private int doInCount = 0; // 入園回数
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public Ticket(int displayPrice, TicketType ticketType) {
-        this.displayPrice = displayPrice;
+    public Ticket(TicketType ticketType) {
         this.ticketType = ticketType;
-        //this.ticketDays = ticketDays;
+        this.displayPrice = ticketType.getTicketPrice();
+        this.ticketDays = ticketType.getTicketDays();
     }
 
     // ===================================================================================
     //                                                                             In Park
     //                                                                             =======
     public void doInPark() {
-        //        if (ticketType > doInCount) {
-        //            doInCount += 1;
-        //        } else {
-        //            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
-        //        }
+        if (ticketDays > doInCount) {
+            doInCount += 1;
+        } else {
+            //throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
+            alreadyIn = true;
+        }
+
     }
 
     // ===================================================================================
@@ -62,6 +67,10 @@ public class Ticket {
 
     public boolean isAlreadyIn() {
         return alreadyIn;
+    }
+
+    public int getDoInCount() {
+        return doInCount;
     }
 
 }

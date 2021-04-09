@@ -29,8 +29,6 @@ public class TicketBooth {
     //    public static String TWO_DAY_PASS_TYPE = "TwoDayPass";
 
     private static final int MAX_QUANTITY = 10;
-    private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
-    private static final int TWO_DAY_PRICE = 13200;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -125,13 +123,15 @@ public class TicketBooth {
     //
     //    }
     //
+
     public Ticket buyOneDayPassport(int handedMoney) { // Challenge2問目でTicketTypeが判別できるよう修正
 
-        final int numberOfTickets = 1; // 購入予定のチケット枚数
-        final int ticketPrice = ONE_DAY_PRICE;
         final TicketType ticketType = TicketType.ONE_DAY_PASS;
+        final int numberOfTickets = ticketType.getTicketDays(); // 購入予定のチケット枚数
+        final int ticketPrice = ticketType.getTicketPrice();
+
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        Ticket ticket = new Ticket(ticketPrice, ticketType);
+        final Ticket ticket = new Ticket(ticketType);
 
         return ticket;
 
@@ -139,13 +139,14 @@ public class TicketBooth {
 
     public TicketBuyResult buyTwoDayPassport(int handedMoney) { // challenge 2問目で追加
 
-        final int numberOfTickets = 2; // 購入予定のチケット枚数
-        final int ticketPrice = TWO_DAY_PRICE;
-        final int change = handedMoney - ticketPrice;
-        TicketType ticketType = TicketType.TWO_DAY_PASS;
+        final TicketType ticketType = TicketType.TWO_DAY_PASS;
+        final int numberOfTickets = ticketType.getTicketDays(); // 購入予定のチケット枚数
+        final int ticketPrice = ticketType.getTicketPrice();
+
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        Ticket ticket = new Ticket(ticketPrice, ticketType);
-        TicketBuyResult result = new TicketBuyResult(ticket, change);
+        final Ticket ticket = new Ticket(ticketType);
+        final int change = handedMoney - ticketPrice;
+        final TicketBuyResult result = new TicketBuyResult(ticket, change);
 
         return result;
 
