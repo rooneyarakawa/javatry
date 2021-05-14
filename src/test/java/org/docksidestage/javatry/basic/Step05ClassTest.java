@@ -200,7 +200,7 @@ public class Step05ClassTest extends PlainTestCase {
 
     }
 
-    //2021/3/15 次回ここから
+    // 2021/3/15 次回ここから
     /**
      * Now you can use only one in spite of two-day passport, so fix Ticket to be able to handle plural days. <br>
      * (TwoDayPassportなのに一回しか利用できません。複数日数に対応できるようにTicketを修正しましょう)
@@ -212,13 +212,15 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBuyResult twoDayPassportResult = booth.buyTwoDayPassport(handedMoney);
         Ticket twoDayPassport = twoDayPassportResult.getTicket();
 
-        twoDayPassport.doInPark();
-        log(twoDayPassport.getDoInCount());
-        log(twoDayPassport.isAlreadyIn());
+        twoDayPassport.doInPark(); // 入場1回目
+        log("doInCount:" + twoDayPassport.getDoInCount());
+        log("isAleadyIn:" + twoDayPassport.isAlreadyIn());
 
-        twoDayPassport.doInPark();
-        log(twoDayPassport.getDoInCount());
-        log(twoDayPassport.isAlreadyIn());
+        twoDayPassport.doInPark(); // 入場2回目 
+        log("doInCount:" + twoDayPassport.getDoInCount());
+        log("isAleadyIn:" + twoDayPassport.isAlreadyIn());
+
+        twoDayPassport.doInPark(); // 入場3回目(怒られる)
 
     }
 
@@ -248,14 +250,27 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_wonder_four() {
         // your confirmation code here
+        TicketBooth booth = new TicketBooth();
+        int handedMoney = 30000;
+        TicketBuyResult fourDayPassportResult = booth.buyFourDayPassport(handedMoney);
+        Ticket fourDayPassport = fourDayPassportResult.getTicket();
+
+        for (int i = 0; i < 5; i++) { // 5回目の入園で怒られるはず
+            fourDayPassport.doInPark();
+            log("doInCount:" + fourDayPassport.getDoInCount());
+            log("isAleadyIn:" + fourDayPassport.isAlreadyIn());
+        }
+
     }
 
+    //2021/5/14 次はここから
     /**
      * Fix it to be able to buy night-only two-day passport (price is 7400). <br>
      * (NightOnlyTwoDayPassport (金額は7400) のチケットも買えるようにしましょう)
      */
     public void test_class_moreFix_wonder_night() {
         // your confirmation code here
+
     }
 
     /**

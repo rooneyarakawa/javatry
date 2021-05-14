@@ -24,10 +24,7 @@ public class TicketBooth {
 
     // ===================================================================================
     //                                                                          Definition
-    //                                                                          ==========
-    //    public static String ONE_DAY_PASS_TYPE = "OneDayPass";
-    //    public static String TWO_DAY_PASS_TYPE = "TwoDayPass";
-
+    //                                                                    ==========
     private static final int MAX_QUANTITY = 10;
 
     // ===================================================================================
@@ -152,6 +149,19 @@ public class TicketBooth {
 
     }
 
+    public TicketBuyResult buyFourDayPassport(int handedMoney) { // Good Luck 1問目で追加
+
+        final TicketType ticketType = TicketType.FOUR_DAY_PASS;
+        final int numberOfTickets = ticketType.getTicketDays(); // 購入予定のチケット枚数
+        final int ticketPrice = ticketType.getTicketPrice();
+
+        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+        TicketBuyResult result = generateTicketBuyResult(handedMoney, ticketType, ticketPrice);
+
+        return result;
+
+    }
+
     /**
      *アサート処理,チケット購入処理の一連の流れの実行(指示？)を行う
      */
@@ -160,6 +170,16 @@ public class TicketBooth {
         assertNumberOfTickets(handedMoney, numberOfTickets, ticketPrice);
         doBuyTicket(numberOfTickets, ticketPrice);
 
+    }
+
+    /**
+     *対象のチケットを作成・返すまでの
+     */
+    private TicketBuyResult generateTicketBuyResult(int handedMoney, TicketType ticketType, int ticketPrice) {
+        final Ticket ticket = new Ticket(ticketType);
+        final int change = handedMoney - ticketPrice;
+        final TicketBuyResult result = new TicketBuyResult(ticket, change);
+        return result;
     }
 
     /**

@@ -29,8 +29,8 @@ public class Ticket {
     private final int displayPrice;
     private final int ticketDays;
 
-    private boolean alreadyIn = false;
     private int doInCount = 0; // 入園回数
+    private boolean alreadyIn = false; // 入園可能回数に達した場合=>true
 
     // ===================================================================================
     //                                                                         Constructor
@@ -45,10 +45,11 @@ public class Ticket {
     //                                                                             In Park
     //                                                                             =======
     public void doInPark() {
-        if (ticketDays > doInCount) {
-            doInCount += 1;
-        } else {
-            //throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
+        if (alreadyIn == true) {
+            throw new IllegalStateException("Already in park by this ticket: displayedPrice=" + displayPrice);
+        }
+        doInCount += 1;
+        if (ticketDays == doInCount) {
             alreadyIn = true;
         }
 
