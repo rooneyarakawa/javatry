@@ -270,7 +270,11 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_moreFix_wonder_night() {
         // your confirmation code here
-
+        TicketBooth booth = new TicketBooth();
+        int handedMoney = 30000;
+        TicketBuyResult result = booth.buyNightOnlyTwoDayPassport(handedMoney);
+        Ticket ticket = result.getTicket();
+        log(ticket.getTicketType());
     }
 
     /**

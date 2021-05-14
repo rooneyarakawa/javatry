@@ -141,9 +141,24 @@ public class TicketBooth {
         final int ticketPrice = ticketType.getTicketPrice();
 
         doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-        final Ticket ticket = new Ticket(ticketType);
-        final int change = handedMoney - ticketPrice;
-        final TicketBuyResult result = new TicketBuyResult(ticket, change);
+        // Goodluck 1問目でリファクタリング
+        //        final Ticket ticket = new Ticket(ticketType);
+        //        final int change = handedMoney - ticketPrice;
+        //        final TicketBuyResult result = new TicketBuyResult(ticket, change);
+        TicketBuyResult result = generateTicketBuyResult(handedMoney, ticketType, ticketPrice);
+
+        return result;
+
+    }
+
+    public TicketBuyResult buyNightOnlyTwoDayPassport(int handedMoney) { // challenge 2問目で追加
+
+        final TicketType ticketType = TicketType.NIGHT_ONLY_TWO_DAY_PASS;
+        final int numberOfTickets = ticketType.getTicketDays(); // 購入予定のチケット枚数
+        final int ticketPrice = ticketType.getTicketPrice();
+
+        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
+        TicketBuyResult result = generateTicketBuyResult(handedMoney, ticketType, ticketPrice);
 
         return result;
 
@@ -173,7 +188,7 @@ public class TicketBooth {
     }
 
     /**
-     *対象のチケットを作成・返すまでの
+     *対象のチケットを作成・返却
      */
     private TicketBuyResult generateTicketBuyResult(int handedMoney, TicketType ticketType, int ticketPrice) {
         final Ticket ticket = new Ticket(ticketType);

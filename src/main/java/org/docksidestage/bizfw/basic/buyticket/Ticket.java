@@ -26,7 +26,8 @@ public class Ticket {
     //                                                                           Attribute
     //                                                                           =========
     private final TicketType ticketType;
-    private final int displayPrice;
+    private final int ticketPrice;
+    private final int displayPrice; //最終表示価格。ticketPrice ≠ displayPrice
     private final int ticketDays;
 
     private int doInCount = 0; // 入園回数
@@ -37,7 +38,8 @@ public class Ticket {
     //                                                                         ===========
     public Ticket(TicketType ticketType) {
         this.ticketType = ticketType;
-        this.displayPrice = ticketType.getTicketPrice();
+        this.ticketPrice = ticketType.getTicketPrice();
+        this.displayPrice = this.ticketPrice;
         this.ticketDays = ticketType.getTicketDays();
     }
 
