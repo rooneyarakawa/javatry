@@ -15,7 +15,7 @@
  */
 package org.docksidestage.javatry.basic;
 
-import org.docksidestage.bizfw.basic.buyticket.Ticket; // challenge1で追加
+import org.docksidestage.bizfw.basic.buyticket.Ticket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth.TicketShortMoneyException;
 import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
@@ -86,7 +86,7 @@ public class Step05ClassTest extends PlainTestCase {
      * Fix the problem of ticket quantity reduction when short money. (Don't forget to fix also previous exercise answers) <br>
      * (お金不足でもチケットが減る問題をクラスを修正して解決しましょう (以前のエクササイズのanswerの修正を忘れずに))
      */
-    public void test_class_letsFix_ticketQuantityReduction() { // quantitの位置を変えて解決 -> お金が足りないときの例外処理を後ろに移動
+    public void test_class_letsFix_ticketQuantityReduction() {
         Integer sea = doTest_class_ticket_wrongQuantity();
         log(sea); // should be max quantity, visual check here
     }
@@ -95,7 +95,7 @@ public class Step05ClassTest extends PlainTestCase {
      * Fix the problem of sales proceeds increased by handed money. (Don't forget to fix also previous exercise answers) <br>
      * (け取ったお金の分だけ売上が増えていく問題をクラスを修正して解決しましょう (以前のエクササイズのanswerの修正を忘れずに))
      */
-    public void test_class_letsFix_salesProceedsIncrease() { // お釣りを考慮した売り上げの増やし方に
+    public void test_class_letsFix_salesProceedsIncrease() {
         TicketBooth booth = new TicketBooth();
         booth.buyOneDayPassport(10000);
         Integer sea = booth.getSalesProceeds();
@@ -129,24 +129,6 @@ public class Step05ClassTest extends PlainTestCase {
         log(booth.getQuantity(), booth.getSalesProceeds()); // should be same as before-fix
     }
 
-    //buyOneDayPassport 新旧比較
-    //  お金が足りてるとき
-    //      quantity => 9(一致)
-    //      salesProceeds => 7400(一致)
-    //  お金が足りないとき
-    //      エラーメッセージ =＞ Short money:1000（一致）
-    //  在庫が足りないとき
-    //      エラーメッセージ => Sold out(一致)
-    //buyTwoDayPassport 新旧比較
-    //  お金が足りてるとき
-    //      quantity => 8(一致)
-    //      salesProceeds => 13200(一致)
-    //      おつり => 800(一致)
-    //  お金が足りないとき
-    //      エラーメッセージ => Short money: 1400(一致)
-    //  在庫が足りないとき
-    //      エラーメッセージ => Sold out（一致）
-
     // ===================================================================================
     //                                                                           Challenge
     //                                                                           =========
@@ -154,8 +136,7 @@ public class Step05ClassTest extends PlainTestCase {
      * Now you cannot get ticket if you buy one-day passport, so return Ticket class and do in-park. <br>
      * (OneDayPassportを買ってもチケットをもらえませんでした。戻り値でTicketクラスを戻すようにしてインしましょう)
      */
-    //2020/10/16 ここまで！
-    //ちょうどlets fixが終わったので、次回はここから 
+
     public void test_class_moreFix_return_ticket() {
         // comment out after modifying the method
         TicketBooth booth = new TicketBooth();
@@ -170,7 +151,7 @@ public class Step05ClassTest extends PlainTestCase {
      * Now also you cannot get ticket if two-day passport, so return class that has ticket and change. <br>
      * (TwoDayPassportもチケットをもらえませんでした。チケットとお釣りを戻すクラスを作って戻すようにしましょう)
      */
-    // 2020/12/11はここから
+
     public void test_class_moreFix_return_whole() {
         // comment out after modifying the method
         TicketBooth booth = new TicketBooth();
@@ -185,7 +166,7 @@ public class Step05ClassTest extends PlainTestCase {
      * Now you cannot judge ticket type "one-day or two-day?", so add method to judge it. <br>
      * (チケットをもらってもOneDayなのかTwoDayなのか区別が付きません。区別を付けられるメソッドを追加しましょう)
      */
-    // 2021/1/15 ここまで。次回もここから
+
     public void test_class_moreFix_type() {
         // your confirmation code here
         TicketBooth booth = new TicketBooth();
@@ -200,7 +181,6 @@ public class Step05ClassTest extends PlainTestCase {
 
     }
 
-    // 2021/3/15 次回ここから
     /**
      * Now you can use only one in spite of two-day passport, so fix Ticket to be able to handle plural days. <br>
      * (TwoDayPassportなのに一回しか利用できません。複数日数に対応できるようにTicketを修正しましょう)

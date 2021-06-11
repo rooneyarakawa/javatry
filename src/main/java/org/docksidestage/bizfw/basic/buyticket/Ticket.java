@@ -54,7 +54,6 @@ public class Ticket {
         if (ticketDays == doInCount) {
             alreadyIn = true;
         }
-
     }
 
     // ===================================================================================

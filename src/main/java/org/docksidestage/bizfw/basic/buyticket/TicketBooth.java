@@ -15,7 +15,6 @@
  */
 package org.docksidestage.bizfw.basic.buyticket;
 
-// done akiyaman javadocにauthorを追加お願いします by jflute (2020/10/16)
 /**
  * @author jflute
  * @author akiyaman
@@ -24,102 +23,22 @@ public class TicketBooth {
 
     // ===================================================================================
     //                                                                          Definition
-    //                                                                    ==========
+    //                                                                         ===========
     private static final int MAX_QUANTITY = 10;
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    // done akiyaman コメントの空白のポリシーが不統一 by jflute (2020/10/16)
-    //  ;// チケットの数
-    //  ; //売り上げ
     private int quantity = MAX_QUANTITY; // チケットの数
     private Integer salesProceeds; // 売り上げ
 
     // ===================================================================================
     //                                                                         Constructor
     //                                                                         ===========
-    public TicketBooth() {
-
-    }
 
     // ===================================================================================
     //                                                                          Buy Ticket
-    //                                                                     ==========
-    // done akiyaman [いいね] コメントアウトの理由コメントがしっかり書いてあるのとてもGood by jflute (2020/10/16)
-    //Let's fix 4問目でコメントアウト
-    //    public void buyOneDayPassport(int handedMoney) {
-    //
-    //        // How To 一問目削除
-    //        // --quantity;
-    //
-    //        if (quantity <= 0) {
-    //            throw new TicketSoldOutException("Sold out");
-    //        }
-    //
-    //        if (handedMoney < ONE_DAY_PRICE) {
-    //            throw new TicketShortMoneyException("Short money: " + handedMoney);
-    //        }
-    //
-    //        // How To 一問目追加
-    //        --quantity;
-    //
-    //        if (salesProceeds != null) { // lets fix 3問目で追加
-    //            salesProceeds = salesProceeds + ONE_DAY_PRICE;
-    //        } else {
-    //            salesProceeds = ONE_DAY_PRICE;
-    //        }
-    //    }
-    //
-    //    //  Let's fix 4問目でコメントアウト
-    //    public int buyTwoDayPassport(int handedMoney) { // OneDayパスポート*2という考え方
-    //
-    //        if (quantity <= 1) {
-    //            throw new TicketSoldOutException("Sold out");
-    //        }
-    //
-    //        if (handedMoney < TWO_DAY_PRICE) {
-    //            throw new TicketShortMoneyException("Short money: " + handedMoney);
-    //        }
-    //
-    //        //                done akiyaman まあ、ローカル変数だったら、定数っぽくても、大文字じゃなくて普通のキャメルケースで by jflute (2020/10/16)
-    //        //                変数を選択して、ctrl+1 => rename in file で修正してみましょう
-    //
-    //        final int CHANGE = handedMoney - TWO_DAY_PRICE;
-    //
-    //        // How To 一問目
-    //        quantity = quantity - 2;
-    //
-    //        if (salesProceeds != null) {
-    //            salesProceeds = salesProceeds + TWO_DAY_PRICE;
-    //        } else {
-    //            salesProceeds = TWO_DAY_PRICE;
-    //        }
-    //
-    //        return CHANGE;
-    //    }
-
-    // done 再利用についてレビューをしていただく  (2020/12/11)
-
-    //    public void buyOneDayPassport(int handedMoney) { // Let's fix 4問目で追加
-    //
-    //        final int numberOfTickets = 1; // 購入予定のチケット枚数
-    //        final int ticketPrice = ONE_DAY_PRICE;
-    //        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-    //
-    //    }
-    //
-    //    public int buyTwoDayPassport(int handedMoney) { // Let's fix 4問目で追加
-    //
-    //        final int numberOfTickets = 2; // 購入予定のチケット枚数
-    //        final int ticketPrice = TWO_DAY_PRICE;
-    //        doBuyingTicketSteps(handedMoney, numberOfTickets, ticketPrice);
-    //        final int change = handedMoney - ticketPrice;
-    //
-    //        return change;
-    //
-    //    }
-    //
+    //                                                                     ===============
 
     public Ticket buyOneDayPassport(int handedMoney) { // Challenge2問目でTicketTypeが判別できるよう修正
 
@@ -246,36 +165,6 @@ public class TicketBooth {
             super(msg);
         }
     }
-
-    //    private enum TicketType {
-    //
-    //        ONE_DAY_PASS("OneDay", 1), TWO_DAY_PASS_TYPE("TwoDay", 2);
-    //
-    //        private String ticketType;
-    //        private int ticketDays;
-    //
-    //        private TicketType(String ticketType, int ticketDays) {
-    //            this.ticketType = ticketType;
-    //            this.ticketDays = ticketDays;
-    //        }
-    //
-    //        private String getTicketType() {
-    //            return ticketType;
-    //        }
-    //
-    //        private int getTicketDays() {
-    //            return ticketDays;
-    //        }
-    //
-    //        private static String getTicketTypeByDays(int ticketDays) {
-    //            for (TicketType ticket : TicketType.values()) {
-    //                if (ticket.getTicketDays() == ticketDays) {
-    //                    return ticket.getTicketType();
-    //                }
-    //            }
-    //            return "ticket type not found";
-    //        }
-    //    };
 
     // ===================================================================================
     //                                                                            Accessor

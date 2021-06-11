@@ -85,7 +85,6 @@ public class Step01VariableTest extends PlainTestCase {
     private int instanceDockside;
     private Integer instanceHangar;
     private String instanceMagiclamp;
-    private char chara;
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_String() {

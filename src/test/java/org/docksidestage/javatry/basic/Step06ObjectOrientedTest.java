@@ -41,7 +41,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     //                                                                        ============
     // -----------------------------------------------------
     //                                        Against Object
-    //                                        --------------
+    //            
+    //--------------
+    //2021/5/14　次はここから
     /**
      * Fix several mistakes in buying one-day passport and in-park process. <br>
      * (OneDayPassportを買って InPark する処理の中で、間違いが5つあるので修正しましょう
@@ -53,7 +55,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         int oneDayPrice = 7400;
         int quantity = 10;
-        Integer salesProceeds = null;
+        //Integer salesProceeds = null;
 
         //
         // [buy one-day passport]
@@ -65,13 +67,19 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         if (handedMoney < oneDayPrice) {
             throw new IllegalStateException("Short money: handedMoney=" + handedMoney);
         }
+
         --quantity;
-        salesProceeds = handedMoney;
+
+        //salesProceeds = handedMoney;//複数回購入を想定できていない
+        //salesProceeds = salesProceeds + handedMoney;
 
         //
         // [ticket info]
         //
-        int displayPrice = quantity;
+
+        //int displayPrice = quantity; // 表示価格を表すもの作りたいのなら、チケット数(quantity)を代入するのは間違い
+        int displayPrice = oneDayPrice;
+
         boolean alreadyIn = false;
 
         // other processes here...
