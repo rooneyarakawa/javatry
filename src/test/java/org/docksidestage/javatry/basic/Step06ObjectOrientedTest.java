@@ -49,7 +49,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      * (OneDayPassportを買って InPark する処理の中で、間違いが5つあるので修正しましょう
      * )
      */
-    public void test_objectOriented_aboutObject_againstObject() {
+    public void test_objectOriented_aboutObject_againstObject() { //のこり一個まちがいがあるらしい。。
         //
         // [ticket booth info]
         //
@@ -102,7 +102,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     }
 
     private void saveBuyingHistory(int quantity, Integer salesProceeds, int displayPrice, boolean alreadyIn) {
-        if (alreadyIn) {
+        if (alreadyIn) { // これはただ購入履歴を保存したいだけ、aleadyInの値は関係ないのでは？
             // only logging here (normally e.g. DB insert)
             //showTicketBooth(displayPrice, salesProceeds); // 引数に渡すパラメータが間違ってる　displayPrice -> quantity(4個目)
             showTicketBooth(quantity, salesProceeds);
@@ -126,6 +126,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      * Read (analyze) this code and compare with the previous test method, and think "what is object?". <br>
      * (このコードを読んで(分析して)、一つ前のテストメソッドと比べて、「オブジェクトとは何か？」を考えてみましょう)
      */
+    //ある特定のテーマに沿って集められた処理やデータを保存する箱(?)
     public void test_objectOriented_aboutObject_usingObject() {
         //
         // [ticket booth info]
@@ -169,6 +170,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // [do in park now!!!]
         //
         ticket.doInPark();
+        log(ticket.isAleadyIn());
 
         // *doInPark() has this process:
         //if (alreadyIn) {
