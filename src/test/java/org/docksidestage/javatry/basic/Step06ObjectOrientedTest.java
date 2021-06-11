@@ -55,7 +55,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         int oneDayPrice = 7400;
         int quantity = 10;
-        //Integer salesProceeds = null;
+        Integer salesProceeds = null;
 
         //
         // [buy one-day passport]
@@ -70,14 +70,14 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
 
         --quantity;
 
-        //salesProceeds = handedMoney;//複数回購入を想定できていない
-        //salesProceeds = salesProceeds + handedMoney;
+        //salesProceeds = handedMoney; // 有り金全部とられてる(1個目)、複数回購入を想定できていない(幻の6個目)
+        salesProceeds = oneDayPrice;
 
         //
         // [ticket info]
         //
 
-        //int displayPrice = quantity; // 表示価格を表すもの作りたいのなら、チケット数(quantity)を代入するのは間違い
+        //int displayPrice = quantity; // 表示価格を表すもの作りたいのなら、チケット数(quantity)を代入するのは間違い(2個目)
         int displayPrice = oneDayPrice;
 
         boolean alreadyIn = false;
@@ -97,14 +97,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         //
         // [final process]
         //
-        saveBuyingHistory(quantity, displayPrice, salesProceeds, alreadyIn);
+        //saveBuyingHistory(quantity, displayPrice, salesProceeds, alreadyIn); // 引数に渡すパラメータが間違ってる　displayPrice -> salesProceeds , salesProceeds -> displayPrice(3個目)
+        saveBuyingHistory(quantity, salesProceeds, displayPrice, alreadyIn);
     }
 
     private void saveBuyingHistory(int quantity, Integer salesProceeds, int displayPrice, boolean alreadyIn) {
         if (alreadyIn) {
             // only logging here (normally e.g. DB insert)
-            showTicketBooth(displayPrice, salesProceeds);
-            showYourTicket(quantity, alreadyIn);
+            //showTicketBooth(displayPrice, salesProceeds); // 引数に渡すパラメータが間違ってる　displayPrice -> quantity(4個目)
+            showTicketBooth(quantity, salesProceeds);
+            //showYourTicket(quantity, alreadyIn); // 引数に渡すパラメータが間違ってる　quantity -> displayPrice(5個目)
+            showYourTicket(displayPrice, alreadyIn);
         }
     }
 
@@ -141,8 +144,8 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // #fixme you if step05 has been finished, you can use this code by jflute (2019/06/15)
         // _/_/_/_/_/_/_/_/_/_/
         //Ticket ticket = booth.buyOneDayPassport(10000);
-        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
-        Ticket ticket = new Ticket(7400); // also here
+        //booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
+        Ticket ticket = booth.buyOneDayPassport(10000); // also here
 
         // *buyOneDayPassport() has this process:
         //if (quantity <= 0) {
