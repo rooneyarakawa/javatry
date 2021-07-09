@@ -57,7 +57,7 @@ public abstract class Animal implements Loudable {
         return barkedSound;
     }
 
-    protected void prepareAbdominalMuscle() {
+    protected void prepareAbdominalMuscle() { // 腹筋の準備
         logger.debug("...Using my abdominal muscle"); // dummy implementation
         downHitPoint();
     }

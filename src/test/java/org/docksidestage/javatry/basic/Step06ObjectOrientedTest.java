@@ -127,7 +127,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      * Read (analyze) this code and compare with the previous test method, and think "what is object?". <br>
      * (このコードを読んで(分析して)、一つ前のテストメソッドと比べて、「オブジェクトとは何か？」を考えてみましょう)
      */
-    //ある特定のテーマに沿って集められた処理やデータを保存する箱(?)
+    //　オブジェクト->ある特定のテーマに沿って集められた処理やデータを保存する箱(?)
     public void test_objectOriented_aboutObject_usingObject() {
         //
         // [ticket booth info]
@@ -209,11 +209,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_1st_concreteOnly() {
         Dog dog = new Dog();
-        BarkedSound sound = dog.bark(); // どうやら命を削って叫んでるっぽい
+        BarkedSound sound = dog.bark(); //命を削って叫んでるっぽい
         String sea = sound.getBarkWord();
         log(sea); // your answer? => wan
         int land = dog.getHitPoint();
-        log(land); // your answer? => 10
+        log(land); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -221,9 +221,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = new Dog();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => wan
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -231,9 +231,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         Animal animal = createAnyAnimal();
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => wan
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? => 7
     }
 
     private Animal createAnyAnimal() {
@@ -249,29 +249,29 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     private void doAnimalSeaLand_for_4th(Animal animal) {
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => wan
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_objectOriented_polymorphism_5rd_overrideWithSuper() {
-        Animal animal = new Cat();
+        Animal animal = new Cat(); // HPが謎の減り方
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => nya-
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? => 5
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_objectOriented_polymorphism_6th_overriddenWithoutSuper() {
-        Animal animal = new Zombie();
+        Animal animal = new Zombie(); // HPは-1固定
         BarkedSound sound = animal.bark();
         String sea = sound.getBarkWord();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => uooo
         int land = animal.getHitPoint();
-        log(land); // your answer? => 
+        log(land); // your answer? => -1
     }
 
     // ===================================================================================
@@ -279,11 +279,11 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     //                                                              ======================
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_objectOriented_polymorphism_interface_dispatch() {
-        Loudable loudable = new Zombie();
+        Loudable loudable = new Zombie(); //animal class自体でinterfaceの実装はすでにされている気がする
         String sea = loudable.soundLoudly();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => uooo
         String land = ((Zombie) loudable).bark().getBarkWord();
-        log(land); // your answer? => 
+        log(land); // your answer? =>  
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */

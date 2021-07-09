@@ -37,7 +37,7 @@ public class Zombie extends Animal {
         return -1; // magic number for infinity hit point
     }
 
-    public static class ZombieDiary {
+    public static class ZombieDiary { // ゾンビ行動記録。なぜか息吸う回数を数えてる。
 
         private int breatheInCount;
 
